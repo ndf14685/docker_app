@@ -1,2 +1,2 @@
 # docker_app
-This is a simple html page create by Docker Image
+This is a simple html page using nginx created by Docker Image
