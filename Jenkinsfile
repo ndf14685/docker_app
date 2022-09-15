@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh 'docker build -t docker_app .'
+                sh 'docker build -t docker_app 00-homer_page/'
             }
         }
         stage('Test') {
@@ -14,13 +14,13 @@ pipeline {
                 sh 'docker run docker_app'
             }
         }
-        stage('Registry') {
-            steps {
-                echo 'Pushing to registry..'
-                sh 'docker tag docker_app:latest
-                    docker_app:latest'
-                sh 'docker push docker_app:latest'
-            }
-        }
+#        stage('Registry') {
+#            steps {
+#                echo 'Pushing to registry..'
+#                sh 'docker tag docker_app:latest
+#                    docker_app:latest'
+#                sh 'docker push docker_app:latest'
+#            }
+#        }
     }
 }
