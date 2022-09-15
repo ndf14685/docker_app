@@ -25,12 +25,24 @@ pipeline {
                 sh 'docker push homer-page:latest'
             }
         }
-        stage('Kubernetes') {
+        stage('Kubernetes config pod') {
             steps {
-                echo 'Deploying to Kubernetes..'
-                sh 'kubectl apply -f 00-homer_page/k8s/homer-page.yaml'
+                echo 'Install pod on Kubernetes..'
+                sh 'kubectl apply -f 00-homer_page/01-pod/pod.yaml'
+                echo 'Open port-fordwarding..'
+                sh 'sh 01-pod/port-forward.sh'
+            }
+
+        }
+        stage('Kubernetes deploy pod') {
+            steps {
+                echo 'Config Kubernetes deployment..'
+                sh 'kubectl apply -f 00-homer_page/02-deployment/deployment.yml'
+                echo 'Config Kubernetes service..'
+                sh 'kubectl apply -f 00-homer_page/02-deployment/service.yml'
             }
         }
+        
 
     }
     post {
