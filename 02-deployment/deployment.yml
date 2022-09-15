@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment 
+metadata:
+  name: homer-page 
+spec:
+  replicas: 2 
+  selector:
+    matchLabels:
+      app: homer-page 
+  template: 
+    metadata:
+      labels: 
+        app: homer-page
+    spec:
+      containers:
+      - name: homer-page 
+        image: caosbinario/homer_page:1.0.0
+        ports:
+        - name: http
+          containerPort: 80 

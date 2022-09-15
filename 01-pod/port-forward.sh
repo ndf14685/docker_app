@@ -1,0 +1,1 @@
+kubectl port-forward homer-page 80:80

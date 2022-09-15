@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Pod 
+metadata:
+  name: homer-page 
+spec:
+  containers:
+    - name: homer-page 
+      image: ndf14685/homer_page:1.0.0
